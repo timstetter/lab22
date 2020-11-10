@@ -56,9 +56,7 @@ public class PizzaSiteController {
 		}
 		double price = 0.0;
 		
-		if (glutenfree) {
-			price += 2.0;
-		}
+		
 		
 		if ("Small".equals(size) ) {
 			price += 7.0;
@@ -69,6 +67,10 @@ public class PizzaSiteController {
 		} else if ("Large".equals(size)) {
 			price += 12.00;
 			price += toppingsAsInt * 1.25;
+		}
+		
+		if (glutenfree) {
+			price += 2.0;
 		}
 			
 		model.addAttribute("price", price);
