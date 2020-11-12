@@ -13,9 +13,9 @@
 <body>
 	<h1>Leave a Review</h1>
 	<form method="post" action="/submitreview">
-		<h2>Name:   <input type="text" name="name" /></h2><br />
+		<h2>Name:   <input type="text" name="name" required="required" /></h2><br />
 		
-		<h2>Comment:<br /> <textarea name="comment" rows="4" cols="20"></textarea></h2><br />		
+		<h2>Comment:</h2><br /> <textarea name="comment" required="required" minlength="5"></textarea>	
 		
 		<h2>Rating:</h2> 
 		<input type="radio" id="rating1"
