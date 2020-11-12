@@ -37,7 +37,7 @@
 		<input type="submit" />
 	</form>
 	<br />
-	<a href="index">Return to Homepage</a>
+	<a href="/">Return to Homepage</a>
 	
 </body>
 </html>

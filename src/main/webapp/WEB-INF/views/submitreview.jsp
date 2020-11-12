@@ -15,7 +15,7 @@
 	
 	<p><b>Rating: </b> ${ rating }</p>	
 	
-	<a href="index">Back to Homepage</a>
+	<a href="/">Back to Homepage</a>
 	
 </body>
 </html>

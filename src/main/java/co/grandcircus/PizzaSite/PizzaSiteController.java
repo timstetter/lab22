@@ -3,26 +3,31 @@ package co.grandcircus.PizzaSite;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PizzaSiteController {
 
-	@GetMapping("/index")
-	public String index() {
+	@GetMapping("/")
+	public String index(Model model) {
+		model.addAttribute("pizzas", SpecialtyPizza.getPizzas());
 		return "index";
 	}
 
-	@GetMapping("/specialty")
-	public String specialty(String name, String price, Model model) {
-		model.addAttribute("name", name);
-		model.addAttribute("price", price);
+	@GetMapping("/specialty/{id}")
+	public String specialty(@PathVariable Integer id,  Model model) {
+		
+		SpecialtyPizza pizza = SpecialtyPizza.getPizzas().get(id);
+		model.addAttribute("pizza", pizza);
+		
 		return "specialty";
 	}
 
 	@GetMapping("/custom")
-	public String custom() {
+	public String custom(Model model) {
+		model.addAttribute("toppings", SpecialtyPizza.getToppings());
 		return "custom";
 	}
 	
