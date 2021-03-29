@@ -32,15 +32,17 @@
 			<c:forEach var="topping" items="${ toppings }">		
 				<li>${topping}</li>		
 			</c:forEach>
-		</ul>
+	   </ul>
        
       
      <p>  
      	<input type="checkbox" name="glutenfree" /> <b>Gluten-Free Crust?</b> ($2.00 extra)
 	</p>
 	
-	<h2>Special Instructions: (Optional)<br /> <textarea name="specialinstructions" placeholder="Optional" rows="4" cols="20"></textarea></h2>
-	
+	<h2>Special Instructions: (Optional)</h2>
+	<p>
+	 	<textarea name="specialinstructions" placeholder="Optional" rows="4" cols="20"></textarea>
+	</p>
 	<input type="submit" value="Calculate Price" />
 	</form>
 	<a href="/">Return to Homepage</a>

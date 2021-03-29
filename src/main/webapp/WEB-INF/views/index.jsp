@@ -16,10 +16,11 @@
 	
 	<h2>Specialty Pizzas</h2>
 		<ul>
-			<c:forEach var="pizza" items="${ pizzas }">		
-		<li><a href="/specialty/${ pizzas.indexOf(pizza) }"><c:out value="${ pizza.getName() }"/></a></li> <br />
+			<c:forEach var="pizza" items="${ pizzas }">	
+				
+				<li><a href="/specialty/${ pizzas.indexOf(pizza) }"><c:out value="${ pizza.getName() }"/></a></li>
 		
-	</c:forEach>
+			</c:forEach>
 		</ul>
 		<br />
 	<h2>Custom Pizza</h2>
