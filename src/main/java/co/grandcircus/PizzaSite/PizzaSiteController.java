@@ -17,11 +17,10 @@ public class PizzaSiteController {
 	}
 
 	@GetMapping("/specialty/{id}")
-	public String specialty(@PathVariable Integer id,  Model model) {
-		
+	public String specialty(@PathVariable Integer id, Model model) {
+
 		SpecialtyPizza pizza = SpecialtyPizza.getPizzas().get(id);
 		model.addAttribute("pizza", pizza);
-		
 		return "specialty";
 	}
 
@@ -30,40 +29,37 @@ public class PizzaSiteController {
 		model.addAttribute("toppings", SpecialtyPizza.getToppings());
 		return "custom";
 	}
-	
+
 	@GetMapping("/review")
 	public String review() {
 		return "review";
 	}
+
 	@PostMapping("/submitreview")
-	public String order(@RequestParam String name, @RequestParam String comment, @RequestParam(defaultValue="5") String rating, 
-			Model model) {
+	public String order(@RequestParam String name, @RequestParam String comment,
+			@RequestParam(defaultValue = "5") String rating, Model model) {
 		model.addAttribute("name", name);
-		model.addAttribute("comment", comment);		
-		model.addAttribute("rating", rating);		
-			
+		model.addAttribute("comment", comment);
+		model.addAttribute("rating", rating);
 		return "submitreview";
 	}
-	
+
 	@PostMapping("/customorder")
-	public String order(@RequestParam String size, @RequestParam String toppings, @RequestParam(required=false) String specialinstructions, 
-			@RequestParam(required=false) boolean glutenfree, Model model) {
+	public String order(@RequestParam String size, @RequestParam String toppings,
+			@RequestParam(required = false) String specialinstructions,
+			@RequestParam(required = false) boolean glutenfree, Model model) {
 		model.addAttribute("size", size);
-		model.addAttribute("toppings", toppings);		
-		model.addAttribute("specialinstructions", specialinstructions);	
+		model.addAttribute("toppings", toppings);
+		model.addAttribute("specialinstructions", specialinstructions);
 		model.addAttribute("glutenfree", glutenfree);
-		
 		int toppingsAsInt = 0;
 		try {
-		toppingsAsInt = Integer.parseInt(toppings);
+			toppingsAsInt = Integer.parseInt(toppings);
 		} catch (NumberFormatException e) {
-			
+
 		}
 		double price = 0.0;
-		
-		
-		
-		if ("Small".equals(size) ) {
+		if ("Small".equals(size)) {
 			price += 7.0;
 			price += toppingsAsInt * 0.50;
 		} else if ("Medium".equals(size)) {
@@ -73,13 +69,10 @@ public class PizzaSiteController {
 			price += 12.00;
 			price += toppingsAsInt * 1.25;
 		}
-		
 		if (glutenfree) {
 			price += 2.0;
 		}
-			
 		model.addAttribute("price", price);
-		
 		return "customorder";
 	}
 }
